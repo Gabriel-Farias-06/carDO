@@ -1,10 +1,11 @@
 package br.com.cardo.ui;
 
-import br.com.cardo.persistence.config.ConnectonConfig;
+import br.com.cardo.persistence.config.ConnectionConfig;
 import br.com.cardo.persistence.dao.BoardDAO;
 import br.com.cardo.persistence.entity.BoardColumnEntity;
 import br.com.cardo.persistence.entity.BoardColumnKindEnum;
 import br.com.cardo.persistence.entity.BoardEntity;
+import br.com.cardo.service.BoardQueryService;
 import br.com.cardo.service.BoardService;
 
 import java.sql.SQLException;
@@ -26,7 +27,19 @@ public class MainMenu {
         int option = 0;
 
         while(option != 4) {
-            System.out.println("                Bem vindo ao Cardo\n     Seu Gerenciador de Tarefas Personalizado\n");
+            System.out.println("                Bem vindo ao carDO\n     Seu Gerenciador de Tarefas Personalizado\n");
+            try(var connection = ConnectionConfig.getConnection()) {
+                var service = new BoardQueryService(connection);
+                if(service.findAll().isPresent()) {
+                    System.out.println("        Seus Quadros");
+                    for (var board : service.findAll().get()) {
+                        System.out.printf("%-15s\n", board.getName());
+                    }
+
+                    System.out.println();
+
+                }
+            }
             System.out.println("1 - Criar um novo board");
             System.out.println("2 - Selecionar um board");
             System.out.println("3 - Excluir um board");
@@ -51,7 +64,7 @@ public class MainMenu {
 
     private void createBoard() {
         var entity = new BoardEntity();
-        try(var connection = ConnectonConfig.getConnection()) {
+        try(var connection = ConnectionConfig.getConnection()) {
             var dao = new BoardDAO(connection);
             var service = new BoardService(connection);
             System.out.print("Informe o nome do novo board: ");
@@ -84,14 +97,14 @@ public class MainMenu {
     private void selectBoard() throws SQLException {
         System.out.print("Informe o nome do board a ser selecionado: ");
         String name = scanner.nextLine();
-        try(var connection = ConnectonConfig.getConnection()) {
-            var dao = new BoardDAO(connection);
-            if (dao.findByName(name).isEmpty()) {
+        try(var connection = ConnectionConfig.getConnection()) {
+            var service = new BoardQueryService(connection);
+            if (service.findByName(name).isEmpty()) {
                 System.out.println("O board " + name + " não foi encontrado");
                 return;
             }
 
-            var boardMenu = new BoardMenu(dao.findByName(name).get());
+            var boardMenu = new BoardMenu(service.findByName(name).get());
             boardMenu.execute();
         }
     }
@@ -99,7 +112,7 @@ public class MainMenu {
     private void deleteBoard() throws SQLException {
         System.out.print("Informe o nome do board a ser excluído: ");
         var name = scanner.nextLine();
-        try(var connection = ConnectonConfig.getConnection()) {
+        try(var connection = ConnectionConfig.getConnection()) {
             var service = new BoardService(connection);
             if(service.delete(name))
                 System.out.println("Board " + name + " deletado com sucesso!");

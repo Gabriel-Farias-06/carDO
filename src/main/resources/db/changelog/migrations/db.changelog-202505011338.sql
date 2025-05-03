@@ -8,7 +8,7 @@ create table block (
     blocked_at timestamp default current_timestamp,
     block_reason varchar(255) not null,
     unblocked_at timestamp null,
-    unblock_reason varchar(255) not null,
+    unblock_reason varchar(255) null,
     fk_card varchar(200) not null,
     constraint foreign key (fk_card) references card(idcard) on delete cascade
 ) ENGINE=InnoDB;

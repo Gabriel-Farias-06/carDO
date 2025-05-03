@@ -6,7 +6,7 @@ import br.com.cardo.ui.MainMenu;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import static br.com.cardo.persistence.config.ConnectonConfig.getConnection;
+import static br.com.cardo.persistence.config.ConnectionConfig.getConnection;
 
 public class Main {
     public static void main(String[] args) throws SQLException {

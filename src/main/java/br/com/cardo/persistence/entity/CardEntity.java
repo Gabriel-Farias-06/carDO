@@ -3,6 +3,7 @@ package br.com.cardo.persistence.entity;
 import lombok.Data;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,5 +15,5 @@ public class CardEntity {
     private String title;
     private String description;
     private BoardColumnEntity boardColumn;
-    private List<BlockEntity> blocks;
+    private List<BlockEntity> blocks  = new ArrayList<>();
 }

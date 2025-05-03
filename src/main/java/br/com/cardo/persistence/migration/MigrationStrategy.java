@@ -12,7 +12,7 @@ import java.io.PrintStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import static br.com.cardo.persistence.config.ConnectonConfig.getConnection;
+import static br.com.cardo.persistence.config.ConnectionConfig.getConnection;
 
 @AllArgsConstructor
 public class MigrationStrategy {
