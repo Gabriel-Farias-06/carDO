@@ -84,15 +84,6 @@ cardo/
 
 ---
 
-## 💡 Melhorias Futuras
-
-* Interface gráfica (Swing/JavaFX)
-* Exportação de boards para PDF/Excel
-* Integração com APIs externas
-* Autenticação de usuários
-
----
-
 ## 👨‍💼 Autor
 
 Desenvolvido por **Gabriel Farias**<br/><br/>
