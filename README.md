@@ -1,4 +1,4 @@
-# 📋 Cardo - Gerenciador de Boards Kanban em Java
+# 📋 carDO - Gerenciador de Boards Kanban em Java
 
 Cardo é um sistema de gerenciamento de quadros no estilo **Kanban**, onde você pode criar boards, adicionar cards, mover cards entre colunas (Ex: A Fazer, Fazendo, Finalizado), bloquear e desbloquear cards, e visualizar detalhes.
 
