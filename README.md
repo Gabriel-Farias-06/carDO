@@ -52,8 +52,8 @@ cardo/
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/cardo.git
-   cd cardo
+   git clone https://github.com/Gabriel-Farias-06/carDO.git
+   cd carDO
    ```
 
 2. Configure o banco de dados:
@@ -70,7 +70,7 @@ cardo/
 4. Execute a classe principal:
 
    ```bash
-   java br.com.cardo.MainMenu
+   java br.com.carDO.Main
    ```
 
 ---
