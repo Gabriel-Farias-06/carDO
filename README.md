@@ -22,7 +22,7 @@ Este projeto foi desenvolvido utilizando **Java**, com arquitetura baseada em **
 
 * Java 17+
 * JDBC (Java Database Connectivity)
-* PostgreSQL / MySQL (ou outro banco relacional via JDBC)
+* MySQL
 * Padrão DAO
 * Lombok
 * Camada de serviço para regras de negócio
@@ -78,7 +78,7 @@ cardo/
 ## ✅ Pré-requisitos
 
 * JDK 17 ou superior
-* Banco de dados relacional (PostgreSQL, MySQL ou outro via JDBC)
+* Banco de dados relacional (MySQL)
 * Driver JDBC configurado no classpath
 * IDE (opcional): IntelliJ, Eclipse, VSCode
 
